@@ -1,0 +1,39 @@
+package com.corporate.talent.hub.models;
+
+public abstract class PublicPerson {
+
+    private String fullName;
+
+    private String identification;
+    private char gender;
+
+    public PublicPerson(String fullName, String identification, char gender) {
+        this.fullName = fullName;
+        this.identification = identification;
+        this.gender = gender;
+    }
+
+    public String getName() {
+        return fullName;
+    }
+
+    public void setName(String name) {
+        this.fullName = fullName;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+}
