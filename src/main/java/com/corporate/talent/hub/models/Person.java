@@ -36,4 +36,9 @@ public sealed abstract class Person permits Employee, ExternalConsultant{
     public void setGender(char gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "|Nombre: %-25s |CC: %-12s |Genero: %-3c ".formatted(getName(),getIdentification(),getGenero());
+    }
 }

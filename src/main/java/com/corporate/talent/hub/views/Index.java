@@ -6,34 +6,61 @@ import javax.swing.*;
 
 public class Index {
 
+    private final EmployeeView employeeView;
+
+    public Index(EmployeeView employeeView) {
+        this.employeeView = employeeView;
+    }
+
     public void menu(){
 
         String options = """
-                1. Registrar Empleados
-                2. Registrar ConsultorExterno
+                1. Registrar Desarrollador
+                2. Registrar Gerente
+                3. Registrar ConsultorExterno
+                4. Ver Empleados
                 """;
 
         int option = -1;
         while (option != 0){
 
-            String input = JOptionPane.showInputDialog(options);
+            String input = (String)
+                    JOptionPane.showInputDialog(
+                            null,
+                            options,
+                            "Talento Hub",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            null,
+                            null
+                    );
 
-            if (null == input){close();break;}
+            if (null == input){ input = "0";}
             if (!Validations.validateEmpty(input)){continue;}
             if (!Validations.validateStringNumber(input)){ continue;}
 
             option = Integer.parseInt(input);
 
-            switch (option){
-                case 1 -> menu();
-                case 2 -> menu();
-                default -> option = close();
+            if (option != 0) {
+                switch (option) {
+                    case 1 -> employeeView.createDeveloper();
+                    case 2 -> employeeView.createManager();
+                    case 3 -> employeeView.createExternalConsultant();
+                    case 4 -> employeeView.viewEmployees();
+                    default -> System.out.println();
+                }
+            }else {
+                JOptionPane.showMessageDialog(
+                        null,
+                        """
+                        El usuario ha cerrado el sistema. 
+                        La sesión ha finalizado correctamente.""",
+                        "Sistema cerrado",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
             }
+
         }
     }
 
-    public int close(){
-        JOptionPane.showMessageDialog(null, "El usuario ha cerrado el sistema. La sesión ha finalizado correctamente.","Sistema cerrado", JOptionPane.INFORMATION_MESSAGE);
-        return 0;
-    }
 }

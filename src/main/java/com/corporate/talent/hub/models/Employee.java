@@ -1,14 +1,12 @@
 package com.corporate.talent.hub.models;
 
-public final class Employee extends Person{
+public abstract sealed class Employee extends Person permits Developer, Manager{
 
     private Double salary;
-    private String jobPosition;
 
-    public Employee(String fullName, String identification, char gender, Double salary, String jobPosition) {
+    public Employee(String fullName, String identification, char gender, Double salary) {
         super(fullName, identification, gender);
         this.salary = salary;
-        this.jobPosition = jobPosition;
     }
 
     public Double getSalary() {
@@ -19,11 +17,8 @@ public final class Employee extends Person{
         this.salary = salary;
     }
 
-    public String getJobPosition() {
-        return jobPosition;
-    }
-
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
+    @Override
+    public String toString() {
+        return super.toString() + "|Salario: $%-12.2f ".formatted(getSalary());
     }
 }

@@ -1,25 +1,53 @@
 package com.corporate.talent.hub.repositories;
 
 import com.corporate.talent.hub.interfaces.Create;
-import com.corporate.talent.hub.interfaces.Rud;
-import com.corporate.talent.hub.models.Employee;
+import com.corporate.talent.hub.models.*;
 
-public class EmployeeRepositori implements Create<Employee>, Rud<Double> {
+import javax.swing.*;
+import java.util.List;
 
-    @Override
-    public void create (Employee employee) {
-       System.out.println("");
+public class EmployeeRepositori{
+
+    private List<Person> empleados;
+
+    public EmployeeRepositori(List<Person> empleados) {
+        this.empleados = empleados;
     }
-    @Override
-    public void read (Double identification) {
-        System.out.println("");
+
+    public void createDeveloper(Developer developer){
+        empleados.add(developer);
+        JOptionPane.showMessageDialog(
+                null,
+                "¡Empleado registrado exitosamente!",
+                "Registro exitoso",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+        JOptionPane.showMessageDialog(null, developer);
     }
-    @Override
-    public void update (Double identification) {
-        System.out.println("");
+
+    public void createManager(Manager manager){
+        empleados.add(manager);
+        JOptionPane.showMessageDialog(
+                null,
+                "¡Empleado registrado exitosamente!",
+                "Registro exitoso",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+        JOptionPane.showMessageDialog(null, manager);
     }
-    @Override
-    public void delete (Double identification) {
-        System.out.println("");
+
+    public void createExternalConsultant(ExternalConsultant externalConsultant){
+        empleados.add(externalConsultant);
+        JOptionPane.showMessageDialog(
+                null,
+                "¡Empleado registrado exitosamente!",
+                "Registro exitoso",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+        JOptionPane.showMessageDialog(null, externalConsultant);
+    }
+
+    public List<Person> getEmployees(){
+        return empleados;
     }
 }

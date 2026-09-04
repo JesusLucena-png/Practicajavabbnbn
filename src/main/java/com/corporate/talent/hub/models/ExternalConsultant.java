@@ -27,4 +27,8 @@ public final class ExternalConsultant extends Person{
         this.jobPosition = jobPosition;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "|Empresa: %-15s |Posicion: %-15s |".formatted(getCompany(),getJobPosition());
+    }
 }
